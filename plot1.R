@@ -1,10 +1,14 @@
 plot1 <- function(){
+      #It's supposed that we start from the file "household_power_consumption.txt"
+      #as unzip left it. 
       my_file <- file("household_power_consumption.txt","rt")
+      #reads first line 
       data_aux <- read.table(my_file, 
                              header = TRUE, sep = ";", numerals = "no.loss", na.strings = "?", 
                              colClasses = c("character", "character", "numeric", "numeric", 
                                             "numeric", "numeric", "numeric", "numeric", "numeric"),
                              nrows=1, stringsAsFactors = FALSE )
+      #with these column names, keeps on reading file from row in which requested dates begins
       data <- read.table(my_file , 
                          header = FALSE, sep = ";", numerals = "no.loss", na.strings = "?", 
                          col.names=colnames(data_aux), colClasses = c("character", "character",
